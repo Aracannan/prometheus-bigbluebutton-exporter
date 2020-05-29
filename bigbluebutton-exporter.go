@@ -177,12 +177,12 @@ func main() {
              <head><title>Big Blue Button exporter</title></head>
              <body>
              <h1>Prometheus Big Blue Button exporter</h1>
-             <p><a href='*metricsPath'>Metrics</a></p>
+             <p><a href='` + *metricsPath + `'>Metrics</a></p>
              </body>
              </html>`))
 	})
 
-	mux.Handle("*metricsPath", promhttp.Handler())
+	mux.Handle(*metricsPath, promhttp.Handler())
 
 	if *debug {
 		mux.HandleFunc("/debug", func(w http.ResponseWriter, r *http.Request) {
